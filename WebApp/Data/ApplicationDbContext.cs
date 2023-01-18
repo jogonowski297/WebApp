@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Models.Domain;
 
 namespace WebApp.Data
 {
@@ -11,5 +12,7 @@ namespace WebApp.Data
         }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Member> Member { get; set; }
     }
 }

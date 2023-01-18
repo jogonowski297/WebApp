@@ -67,6 +67,7 @@ namespace WebApp.Areas.Identity.Pages.Account.Manage
             public string Name { get; set; }
 
             public string ProfilePicture { get; set; }
+
             public IFormFile ImageFile { get; set; }
         }
 
