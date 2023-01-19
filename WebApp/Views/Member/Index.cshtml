@@ -1,0 +1,39 @@
+﻿@model List<WebApp.Models.Domain.Member>
+
+@{
+}
+
+<h1> Members </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Vehicle</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var member in Model)
+        {
+            <tr>
+                <td>@member.Id</td>
+                <td>@member.Name</td>
+                <td>@member.Surname</td>
+                <td>@member.Email</td>
+                <td>@member.Phone</td>
+                <td>@member.Vehicle</td>
+                <td>@member.Brand</td>
+                <td>@member.Model</td>
+                <td><a href="Member/View/@member.Id">View</a></td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
