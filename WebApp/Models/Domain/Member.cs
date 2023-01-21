@@ -1,9 +1,12 @@
-﻿namespace WebApp.Models.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebApp.Models.Domain
 {
     public class Member
     {
 
         public Guid Id { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

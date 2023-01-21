@@ -33,23 +33,28 @@ namespace WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddMemberViewModel addMemberRequest)
         {
-            var member = new Member()
+            if (ModelState.IsValid)
             {
-                Id = Guid.NewGuid(),
-                Name = addMemberRequest.Name,
-                Surname = addMemberRequest.Surname,
-                Email = addMemberRequest.Email,
-                Phone = addMemberRequest.Phone,
-                Vehicle = addMemberRequest.Vehicle,
-                Brand = addMemberRequest.Brand,
-                Model = addMemberRequest.Model
-                
-                
-            };
+                var member = new Member()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = addMemberRequest.Name,
+                    Surname = addMemberRequest.Surname,
+                    Email = addMemberRequest.Email,
+                    Phone = addMemberRequest.Phone,
+                    Vehicle = addMemberRequest.Vehicle,
+                    Brand = addMemberRequest.Brand,
+                    Model = addMemberRequest.Model
 
-            applicationDbContrext.Member.AddAsync(member);
-            applicationDbContrext.SaveChangesAsync();
-            return RedirectToAction("Add");
+
+                };
+
+                applicationDbContrext.Member.AddAsync(member);
+                applicationDbContrext.SaveChangesAsync();
+                return RedirectToAction("Add");
+            }
+            return View();
+            
         }
 
         [HttpGet]
