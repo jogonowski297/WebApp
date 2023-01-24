@@ -11,7 +11,10 @@ namespace WebApp.Models.Domain
 
         public string Track { get; set; }
 
-        public string TrainingDate { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        [DataType(DataType.Date)]
+        public DateTime TrainingDate { get; set; }
 
         public string Fee { get; set; }
 

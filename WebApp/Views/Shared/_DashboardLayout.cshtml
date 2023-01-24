@@ -13,23 +13,17 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light justify-content-between">
-      <a class="navbar-brand ms-5">Navbar</a>
+    <nav class="navbar navbar-light bg-secondary justify-content-between">
+      <a class="navbar-brand ms-5">WebApp</a>
 
         <partial name="_LoginPartial" />
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="row h-100">
+            <nav class="col-md-2 d-none d-md-block bg-dark sidebar h-100">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">
                                 <span data-feather="file"></span>
@@ -49,15 +43,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" asp-controller="Dashboard" asp-action="Add">
                                 <span data-feather="bar-chart-2"></span>
-                                Reports
+                                Add training fee
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span>
-                                Integrations
+                            <a class="nav-link" asp-controller="Dashboard" asp-action="ViewTrainingFee">
+                                <span data-feather="bar-chart-2"></span>
+                                View all fees
                             </a>
                         </li>
                     </ul>
@@ -73,24 +67,6 @@
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Current month
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Last quarter
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Social engagement
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Year-end sale
                             </a>
                         </li>
                     </ul>

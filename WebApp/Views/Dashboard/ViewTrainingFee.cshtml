@@ -1,0 +1,35 @@
+﻿@model List<WebApp.Models.Domain.TrainingFees>
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+
+<h1> Your training fee </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>MemberID</th>
+            <th>Track</th>
+            <th>TrainingDate</th>
+            <th>Fee</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feelist in Model)
+        {
+            <tr>
+                <td>@feelist.Id</td>
+                <td>@feelist.MemberId</td>
+                <td>@feelist.Track</td>
+                <td>@feelist.TrainingDate</td>
+                <td>@feelist.Fee</td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>

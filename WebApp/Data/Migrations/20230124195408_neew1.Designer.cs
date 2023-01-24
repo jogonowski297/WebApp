@@ -12,8 +12,8 @@ using WebApp.Data;
 namespace WebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230124194830_new")]
-    partial class @new
+    [Migration("20230124195408_neew1")]
+    partial class neew1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -302,9 +302,8 @@ namespace WebApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TrainingDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("TrainingDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
