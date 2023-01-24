@@ -1,0 +1,23 @@
+﻿@model WebApp.Models.AddTrainingFeesViewModel
+@{
+}
+
+
+<h1>Add Training Fee</h1>
+
+<form method="post" action="Add" class="mt-5">
+
+    <div class="mb-3">
+        <label for="" class="form-label">Date</label>
+        <input type="date" class="form-control" asp-for="TrainingDate">
+        <span asp-validation-for="TrainingDate" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Fee</label>
+        <input type="text" class="form-control" asp-for="Fee">
+        <span asp-validation-for="Fee" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

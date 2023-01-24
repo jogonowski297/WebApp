@@ -14,5 +14,8 @@ namespace WebApp.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Member> Member { get; set; }
+
+        public DbSet<TrainingFees> TrainingFees { get; set; }
+
     }
 }
