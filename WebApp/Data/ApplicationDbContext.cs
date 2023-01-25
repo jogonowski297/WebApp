@@ -17,5 +17,7 @@ namespace WebApp.Data
 
         public DbSet<TrainingFees> TrainingFees { get; set; }
 
+        public DbSet<AccidentNotifi> AccidentNotifi { get; set; }
+
     }
 }

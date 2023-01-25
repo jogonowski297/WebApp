@@ -1,0 +1,30 @@
+﻿@model WebApp.Models.AddAccidentNotifiViewModel
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+
+<h1>Add Accident Notification</h1>
+
+<form method="post" action="AccidentNotifiAdd" class="mt-5">
+
+    <div class="mb-3">
+        <label for="" class="form-label">Track</label>
+        <input type="text" class="form-control" asp-for="Track">
+        <span asp-validation-for="Track" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Description</label>
+        <input type="text" class="form-control" asp-for="Description">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Distance [m]</label>
+        <input type="number" class="form-control" asp-for="Distance">
+        <span asp-validation-for="Distance" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

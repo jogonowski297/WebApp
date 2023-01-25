@@ -35,6 +35,11 @@ namespace WebApp.Controllers
             return View();
         }
 
+        public IActionResult AccidentNotifi()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(AddTrainingFeesViewModel addTrainingFeeRequest)
         {
@@ -63,6 +68,35 @@ namespace WebApp.Controllers
       
             }
             return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AccidentNotifiAdd(AddAccidentNotifiViewModel addAccident)
+        {
+
+            string UserId = _userManager.GetUserId(HttpContext.User);
+
+            if (ModelState.IsValid)
+            {
+                if (!UserId.IsNullOrEmpty())
+                {
+                    var accident = new AccidentNotifi()
+                    {
+                        Id = Guid.NewGuid(),
+                        Track = addAccident.Track,
+                        Description = addAccident.Description,
+                        Distance = addAccident.Distance
+
+                    };
+
+                    applicationDbContrext.AccidentNotifi.AddAsync(accident);
+                    applicationDbContrext.SaveChangesAsync();
+                    return RedirectToAction("AccidentNotifi");
+                }
+
+            }
+            return View("~/views/shared/Error.cshtml");
 
         }
 
