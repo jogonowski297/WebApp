@@ -19,12 +19,12 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            //if (User.IsInRole("Admin"))
-            //{
-            var members = await applicationDbContrext.Member.ToListAsync();
-            return View(members);
-            //}
-            //return RedirectToAction("Index", "Home");
+            if (User.IsInRole("Admin"))
+            {
+                var members = await applicationDbContrext.Member.ToListAsync();
+                return View(members);
+            }
+            return RedirectToAction("Index", "Home");
 
         }
 
