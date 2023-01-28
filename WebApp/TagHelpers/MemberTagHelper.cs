@@ -16,7 +16,7 @@ namespace WebApp.TagHelpers
             foreach(var member in Members)
             {
                 html.Append("<li>");
-                html.Append(member.Name + " Nazwiskod: " + member.Surname);
+                html.Append(member.Name + " Nazwisko: " + member.Surname);
                 html.Append("</li>");
             }
 
