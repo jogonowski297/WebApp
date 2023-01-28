@@ -113,5 +113,13 @@ namespace WebApp.Controllers
             return View(feelist);
 
         }
+
+        [HttpGet]
+        public IActionResult ViewAccidentNotifi()
+        {
+            var feelist = applicationDbContrext.AccidentNotifi.ToList();
+            return View(feelist);
+
+        }
     }
 }

@@ -19,15 +19,23 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            //if (User.IsInRole("Admin"))
+            //{
             var members = await applicationDbContrext.Member.ToListAsync();
             return View(members);
+            //}
+            //return RedirectToAction("Index", "Home");
 
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            return View();
+            if (User.IsInRole("Admin"))
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -60,27 +68,33 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> View(Guid id)
         {
-            var member = await applicationDbContrext.Member.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (member != null)
+            if (User.IsInRole("Admin"))
             {
+                var member = await applicationDbContrext.Member.FirstOrDefaultAsync(x => x.Id == id);
 
-                var viewModel = new UpdateMemberViewModel()
+                if (member != null)
                 {
-                    Id = member.Id,
-                    Name = member.Name,
-                    Surname = member.Surname,
-                    Email = member.Email,
-                    Phone = member.Phone,
-                    Vehicle = member.Vehicle,
-                    Brand = member.Brand,
-                    Model = member.Model
-                };
 
-                return await Task.Run(() => View("View", viewModel));
+                    var viewModel = new UpdateMemberViewModel()
+                    {
+                        Id = member.Id,
+                        Name = member.Name,
+                        Surname = member.Surname,
+                        Email = member.Email,
+                        Phone = member.Phone,
+                        Vehicle = member.Vehicle,
+                        Brand = member.Brand,
+                        Model = member.Model
+                    };
+
+
+                    return await Task.Run(() => View("View", viewModel));
+
+                }
+
+                return RedirectToAction("Index");
             }
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]

@@ -126,7 +126,9 @@ namespace WebApp.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
 
+                    // Dodanie nowego uzytkownika do roli User
                     await _userManager.AddToRoleAsync(user, Roles.User.ToString());
+
                     _logger.LogInformation("User created a new account with password.");
 
 
