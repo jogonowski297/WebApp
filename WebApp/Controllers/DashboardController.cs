@@ -117,8 +117,8 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult ViewAccidentNotifi()
         {
-            var feelist = applicationDbContrext.AccidentNotifi.ToList();
-            return View(feelist);
+            var accident = applicationDbContrext.AccidentNotifi.ToList();
+            return View(accident);
 
         }
     }

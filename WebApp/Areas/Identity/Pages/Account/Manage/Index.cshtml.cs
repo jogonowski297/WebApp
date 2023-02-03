@@ -64,7 +64,11 @@ namespace WebApp.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
 
-            public string Name { get; set; }
+            public string FirstName { get; set; }
+
+            public string LastName { get; set; }
+
+            public string Nick { get; set; }
 
             public string ProfilePicture { get; set; }
 
@@ -81,7 +85,9 @@ namespace WebApp.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                Name = user.Name,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Nick = user.Nick,
                 ProfilePicture = user.ProfilePicture
             };
         }
@@ -122,9 +128,9 @@ namespace WebApp.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-            if (Input.Name != user.Name)
+            if (Input.FirstName != user.FirstName)
             {
-                user.Name = Input.Name;
+                user.FirstName = Input.FirstName;
                 await _userManager.UpdateAsync(user);
             }
 

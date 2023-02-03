@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using WebApp.Data;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -7,15 +9,18 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext applicationDbContrext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext applicationDbContrext)
         {
             _logger = logger;
+            this.applicationDbContrext = applicationDbContrext;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var members = await applicationDbContrext.Member.ToListAsync();
+            return View(members);
         }
 
         public IActionResult Privacy()

@@ -21,7 +21,7 @@ namespace AspnetIdentityRoleBasedTutorial.Data
             {
                 UserName = "admin@gmail.com",
                 Email = "admin@gmail.com",
-                Name = "Ravindra",
+                FirstName = "Ravindra",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };

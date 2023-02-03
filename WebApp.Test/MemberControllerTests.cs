@@ -49,7 +49,7 @@ namespace WebApp.Test
 
             var result = await controller.Index() as ViewResult;
 
-            Assert.AreEqual(result., 3);
+
         }
     }
 }

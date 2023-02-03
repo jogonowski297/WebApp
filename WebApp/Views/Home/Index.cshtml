@@ -1,4 +1,7 @@
-﻿@{
+﻿@using WebApp.Models.Domain;
+@model List<WebApp.Models.Domain.Member>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -12,4 +15,8 @@
         </p>
         
     </div>
+    @await Html.PartialAsync("Helper", Model)
+  
+
+
 </div>

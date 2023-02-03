@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models.Domain;
 
@@ -18,6 +19,13 @@ namespace WebApp.Data
         public DbSet<TrainingFees> TrainingFees { get; set; }
 
         public DbSet<AccidentNotifi> AccidentNotifi { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<ApplicationUser>().ToTable("Users");
+            builder.Entity<IdentityRole>().ToTable("Roles");
+        }
 
     }
 }

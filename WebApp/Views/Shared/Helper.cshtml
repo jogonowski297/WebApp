@@ -1,0 +1,22 @@
+﻿@model List<WebApp.Models.Domain.Member>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.Name</td>
+                <td>@member.Surname</td>
+                <td>@member.Vehicle</td>
+            </tr>
+        }
+    </tbody>
+</table>
