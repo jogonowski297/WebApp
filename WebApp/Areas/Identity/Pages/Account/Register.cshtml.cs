@@ -72,12 +72,20 @@ namespace WebApp.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-
+            [Required]
+            [Display(Name = "FirstName")]
             public string FirstName { get; set; }
 
+            [Required]
+            [Display(Name = "LastName")]
             public string LastName { get; set; }
 
             public string Nick { get; set; }
+
+            [Display(Name = "PhoneNumber")]
+            [Required(ErrorMessage = "Mobile Number is required.")]
+            [RegularExpression("^([0-9]{3}-[0-9]{3}-[0-9]{3})$", ErrorMessage = "Podaj numer telefonu w formacie 111-222-333")]
+            public string PhoneNumber { get; set; }
 
 
 
@@ -128,8 +136,11 @@ namespace WebApp.Areas.Identity.Pages.Account
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
                 user.Nick = Input.Nick;
+                user.PhoneNumber = Input.PhoneNumber;
+
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)

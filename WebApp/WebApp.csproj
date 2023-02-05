@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\image\" />
     <Folder Include="wwwroot\Uploads\" />
 	  <InternalsVisibleTo Include="$(AssemblyName).Test" />
   </ItemGroup>

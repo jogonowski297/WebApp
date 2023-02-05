@@ -60,8 +60,9 @@ namespace WebApp.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "PhoneNumber")]
+            [Required(ErrorMessage = "Mobile Number is required.")]
+            [RegularExpression("^([0-9]{3}-[0-9]{3}-[0-9]{3})$", ErrorMessage = "Podaj numer telefonu w formacie 111-222-333")]
             public string PhoneNumber { get; set; }
 
             public string FirstName { get; set; }
@@ -78,13 +79,13 @@ namespace WebApp.Areas.Identity.Pages.Account.Manage
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            //var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber,
+                PhoneNumber = user.PhoneNumber,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Nick = user.Nick,
@@ -118,23 +119,42 @@ namespace WebApp.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
+            //var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            //if (Input.PhoneNumber != phoneNumber)
+            //{
+            //    var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
+            //    if (!setPhoneResult.Succeeded)
+            //    {
+            //        StatusMessage = "Unexpected error when trying to set phone number.";
+            //        return RedirectToPage();
+            //    }
+            //}
+
+            if (Input.PhoneNumber != user.PhoneNumber)
             {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
-                {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
-                    return RedirectToPage();
-                }
+                user.PhoneNumber = Input.PhoneNumber;
+                await _userManager.UpdateAsync(user);
             }
+
             if (Input.FirstName != user.FirstName)
             {
                 user.FirstName = Input.FirstName;
                 await _userManager.UpdateAsync(user);
             }
 
-            if(Input.ImageFile != null)
+            if (Input.LastName != user.LastName)
+            {
+                user.LastName = Input.LastName;
+                await _userManager.UpdateAsync(user);
+            }
+
+            if (Input.Nick != user.Nick)
+            {
+                user.Nick = Input.Nick;
+                await _userManager.UpdateAsync(user);
+            }
+
+            if (Input.ImageFile != null)
             {
                 var result = _fileService.SaveImage(Input.ImageFile);
                 if( result.Item1 == 1)
